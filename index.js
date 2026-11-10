@@ -32,7 +32,8 @@ const { stuffrole3 } = require("./routes/stuffrole3Route");
 const { stage4 } = require("./routes/stage4Route");
 const { branch5 } = require("./routes/branch5Route");
 const { group6 } = require("./routes/group6Route");
-
+const { groupstuff7 } = require("./routes/groupstuff7Route");
+const { lesson8 } = require("./routes/lesson8Route");
 
 app.use("/role1", role1);
 app.use("/stuff2", stuff2);
@@ -40,6 +41,8 @@ app.use("/stuffrole3", stuffrole3);
 app.use("/stage4", stage4);
 app.use("/branch5", branch5);
 app.use("/group6", group6);
+app.use("/groupstuff7", groupstuff7);
+app.use("/lesson8", lesson8);
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
