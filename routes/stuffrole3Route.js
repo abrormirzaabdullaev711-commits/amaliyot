@@ -57,11 +57,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: string
  *                 description: Role 
  *     responses:
- *       201:
+ *       '201':
  *         description: Stuffrole yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuffrole3.post("/addStuffRole3", validateSchema(createStuffRole3ValidationSchema), addStuffRole3);
@@ -73,9 +73,9 @@ stuffrole3.post("/addStuffRole3", validateSchema(createStuffRole3ValidationSchem
  *     summary: Barcha stuffrole larni olish
  *     tags: [StuffRole]
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuffrole ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuffrole3.get("/getStuffRole3", getStuffRole3);
@@ -94,11 +94,11 @@ stuffrole3.get("/getStuffRole3", getStuffRole3);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuffrole topildi
- *       404:
+ *       '404':
  *         description: Stuffrole topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuffrole3.get("/getStuffRole3ById/:id", getStuffRole3ById);
@@ -116,11 +116,11 @@ stuffrole3.get("/getStuffRole3ById/:id", getStuffRole3ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuffrole o'chirildi
- *       404:
+ *       '404':
  *         description: Stuffrole topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuffrole3.delete("/deleteStuffRole3/:id", deleteStuffRole3);
@@ -151,13 +151,13 @@ stuffrole3.delete("/deleteStuffRole3/:id", deleteStuffRole3);
  *                 type: string
  *                 description: Role IDsi
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuffrole yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Stuffrole topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuffrole3.put("/updateStuffRole3ById/:id", validateSchema(updateStuffRole3ValidationSchema), updateStuffRole3);

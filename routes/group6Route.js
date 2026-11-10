@@ -88,11 +88,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: boolean
  *                 description: Faollik holati
  *     responses:
- *       201:
+ *       '201':
  *         description: Group yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 group6.post("/addGroup6", validateSchema(createGroup6ValidationSchema), addGroup6);
@@ -104,9 +104,9 @@ group6.post("/addGroup6", validateSchema(createGroup6ValidationSchema), addGroup
  *     summary: Barcha group larni olish
  *     tags: [Group]
  *     responses:
- *       200:
+ *       '200':
  *         description: Group ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 group6.get("/getGroup6", getGroup6);
@@ -126,11 +126,11 @@ group6.get("/getGroup6", getGroup6);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Group topildi
- *       404:
+ *       '404':
  *         description: Group topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 group6.get("/getGroup6ById/:id", getGroup6ById);
@@ -148,11 +148,11 @@ group6.get("/getGroup6ById/:id", getGroup6ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Group o'chirildi
- *       404:
+ *       '404':
  *         description: Group topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 group6.delete("/deleteGroup6/:id", deleteGroup6);
@@ -207,13 +207,13 @@ group6.delete("/deleteGroup6/:id", deleteGroup6);
  *                 type: boolean
  *                 description: Faollik holati
  *     responses:
- *       200:
+ *       '200':
  *         description: Group yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Group topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 group6.put("/updateGroup6ById/:id", validateSchema(updateGroup6ValidationSchema), updateGroup6);

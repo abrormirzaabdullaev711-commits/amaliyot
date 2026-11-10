@@ -30,7 +30,7 @@ const validateSchema = (schema) => (req, res, next) => {
 /**
  * @swagger
  * tags:
- *   name: Group
+ *   name: Groupstuff
  *   description: GroupStuff7 ni boshqarish endpointlari
  */
 
@@ -39,7 +39,7 @@ const validateSchema = (schema) => (req, res, next) => {
  * /groupstuff7/addGroupStuff7:
  *   post:
  *     summary: Yangi groupstuff7 yaratish
- *     tags: [Group]
+ *     tags: [Groupstuff]
  *     requestBody:
  *       required: true
  *       content:
@@ -57,11 +57,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: string
  *                 description: Stuff IDsi
  *     responses:
- *       201:
+ *       '201':
  *         description: groupstuff7 yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 groupstuff7.post("/addGroupStuff7", validateSchema(createGroupStuff7ValidationSchema), addGroupStuff7);
@@ -71,11 +71,11 @@ groupstuff7.post("/addGroupStuff7", validateSchema(createGroupStuff7ValidationSc
  * /groupstuff7/getGroupStuff7:
  *   get:
  *     summary: Barcha groupstuff7 larni olish
- *     tags: [Group]
+ *     tags: [Groupstuff]
  *     responses:
- *       200:
+ *       '200':
  *         description: groupstuff7 ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 groupstuff7.get("/getGroupStuff7", getGroupStuff7);
@@ -85,7 +85,7 @@ groupstuff7.get("/getGroupStuff7", getGroupStuff7);
  * /groupstuff7/getGroupStuff7ById/{id}:
  *   get:
  *     summary: ID orqali groupstuff7 olish
- *     tags: [Group]
+ *     tags: [Groupstuff]
  *     parameters:
  *       - in: path
  *         name: id
@@ -93,11 +93,11 @@ groupstuff7.get("/getGroupStuff7", getGroupStuff7);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: groupstuff7 topildi
- *       404:
+ *       '404':
  *         description: groupstuff7 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 groupstuff7.get("/getGroupStuff7ById/:id", getGroupStuff7ById);
@@ -107,7 +107,7 @@ groupstuff7.get("/getGroupStuff7ById/:id", getGroupStuff7ById);
  * /groupstuff7/deleteGroupStuff7/{id}:
  *   delete:
  *     summary: groupstuff7 o'chirish
- *     tags: [Group]
+ *     tags: [Groupstuff]
  *     parameters:
  *       - in: path
  *         name: id
@@ -115,11 +115,11 @@ groupstuff7.get("/getGroupStuff7ById/:id", getGroupStuff7ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: groupstuff7 o'chirildi
- *       404:
+ *       '404':
  *         description: groupstuff7 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 groupstuff7.delete("/deleteGroupStuff7/:id", deleteGroupStuff7);
@@ -129,7 +129,7 @@ groupstuff7.delete("/deleteGroupStuff7/:id", deleteGroupStuff7);
  * /groupstuff7/updateGroupStuff7ById/{id}:
  *   put:
  *     summary: groupstuff7 ma'lumotlarini yangilash
- *     tags: [Group]
+ *     tags: [Groupstuff]
  *     parameters:
  *       - in: path
  *         name: id
@@ -150,13 +150,13 @@ groupstuff7.delete("/deleteGroupStuff7/:id", deleteGroupStuff7);
  *                 type: string
  *                 description: Stuff IDsi
  *     responses:
- *       200:
+ *       '200':
  *         description: groupstuff7 yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: groupstuff7 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 groupstuff7.put("/updateGroupStuff7ById/:id", validateSchema(updateGroupStuff7ValidationSchema), updateGroupStuff7);

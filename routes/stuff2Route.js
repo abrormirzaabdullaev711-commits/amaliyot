@@ -72,11 +72,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: boolean
  *                 description: Faollik holati
  *     responses:
- *       201:
+ *       '201':
  *         description: Stuff yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuff2.post("/addStuff2", validateSchema(createStuff2ValidationSchema), addStuff2);
@@ -88,9 +88,9 @@ stuff2.post("/addStuff2", validateSchema(createStuff2ValidationSchema), addStuff
  *     summary: Barcha stuff larni olish
  *     tags: [Stuff]
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuff ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuff2.get("/getStuff2", getStuff2);
@@ -109,11 +109,11 @@ stuff2.get("/getStuff2", getStuff2);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuff topildi
- *       404:
+ *       '404':
  *         description: Stuff topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuff2.get("/getStuff2ById/:id", getStuff2ById);
@@ -131,11 +131,11 @@ stuff2.get("/getStuff2ById/:id", getStuff2ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuff o'chirildi
- *       404:
+ *       '404':
  *         description: Stuff topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuff2.delete("/deleteStuff2/:id", deleteStuff2);
@@ -172,13 +172,13 @@ stuff2.delete("/deleteStuff2/:id", deleteStuff2);
  *                 type: boolean
  *                 description: Faollik holati
  *     responses:
- *       200:
+ *       '200':
  *         description: Stuff yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Stuff topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stuff2.put("/updateStuff2ById/:id", validateSchema(updateStuff2ValidationSchema), updateStuff2);

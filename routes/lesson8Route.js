@@ -30,7 +30,7 @@ const validateSchema = (schema) => (req, res, next) => {
 /**
  * @swagger
  * tags:
- *   name: Group
+ *   name: Lesson
  *   description: Lesson8 ni boshqarish endpointlari
  */
 
@@ -39,7 +39,7 @@ const validateSchema = (schema) => (req, res, next) => {
  * /lesson8/addLesson8:
  *   post:
  *     summary: Yangi lesson8 yaratish
- *     tags: [Group]
+ *     tags: [Lesson]
  *     requestBody:
  *       required: true
  *       content:
@@ -49,7 +49,7 @@ const validateSchema = (schema) => (req, res, next) => {
  *             required:
  *               - lesson_theme
  *               - lesson_number
- *               - group_id
+ *               - lesson_id
  *               - lesson_date
  *             properties:
  *               lesson_theme:
@@ -58,19 +58,19 @@ const validateSchema = (schema) => (req, res, next) => {
  *               lesson_number:
  *                 type: number
  *                 description: Dars raqami
- *               group_id:
+ *               Lesson_id:
  *                 type: string
- *                 description: Group IDsi
+ *                 description: Lesson IDsi
  *               lesson_date:
  *                 type: string
  *                 format: date
  *                 description: Dars sanasi
  *     responses:
- *       201:
+ *       '201':
  *         description: Lesson8 yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 lesson8.post("/addLesson8", validateSchema(createLesson8ValidationSchema), addLesson8);
@@ -80,11 +80,11 @@ lesson8.post("/addLesson8", validateSchema(createLesson8ValidationSchema), addLe
  * /lesson8/getLesson8:
  *   get:
  *     summary: Barcha lesson8 larni olish
- *     tags: [Group]
+ *     tags: [Lesson]
  *     responses:
- *       200:
+ *       '200':
  *         description: Lesson8 ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 lesson8.get("/getLesson8", getLesson8);
@@ -94,7 +94,7 @@ lesson8.get("/getLesson8", getLesson8);
  * /lesson8/getLesson8ById/{id}:
  *   get:
  *     summary: ID orqali lesson8 olish
- *     tags: [Group]
+ *     tags: [Lesson]
  *     parameters:
  *       - in: path
  *         name: id
@@ -102,11 +102,11 @@ lesson8.get("/getLesson8", getLesson8);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Lesson8 topildi
- *       404:
+ *       '404':
  *         description: Lesson8 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 lesson8.get("/getLesson8ById/:id", getLesson8ById);
@@ -116,7 +116,7 @@ lesson8.get("/getLesson8ById/:id", getLesson8ById);
  * /lesson8/deleteLesson8/{id}:
  *   delete:
  *     summary: Lesson8 o'chirish
- *     tags: [Group]
+ *     tags: [Lesson]
  *     parameters:
  *       - in: path
  *         name: id
@@ -124,11 +124,11 @@ lesson8.get("/getLesson8ById/:id", getLesson8ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Lesson8 o'chirildi
- *       404:
+ *       '404':
  *         description: Lesson8 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 lesson8.delete("/deleteLesson8/:id", deleteLesson8);
@@ -137,8 +137,8 @@ lesson8.delete("/deleteLesson8/:id", deleteLesson8);
  * @swagger
  * /lesson8/updateLesson8ById/{id}:
  *   put:
- *     summary: Lesson8 ma'lumotlarini yangilash
- *     tags: [Group]
+ *     summary: Lesson8 malumotlarini yangilash
+ *     tags: [Lesson]
  *     parameters:
  *       - in: path
  *         name: id
@@ -157,22 +157,21 @@ lesson8.delete("/deleteLesson8/:id", deleteLesson8);
  *                 description: Dars mavzusi
  *               lesson_number:
  *                 type: number
- *                 description: Dars raqami
- *               group_id:
+ *                 description: 67
+ *               lesson_id: 
  *                 type: string
- *                 description: Group IDsi
+ *                 description: Lesson id
  *               lesson_date:
  *                 type: string
- *                 format: date
- *                 description: Dars sanasi
+ *                 description: Dars date
  *     responses:
- *       200:
+ *       '200':
  *         description: Lesson8 yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Lesson8 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 lesson8.put("/updateLesson8ById/:id", validateSchema(updateLesson8ValidationSchema), updateLesson8);

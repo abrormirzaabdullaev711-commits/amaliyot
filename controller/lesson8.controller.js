@@ -118,7 +118,7 @@ const updateLesson8 = async (req, res) => {
     }
     res.json({
       success: true,
-      message: "lesson yangilandi",
+      message: "lesson yangialandi",
       lesson: updateLesson,
     });
   } catch (err) {
@@ -137,7 +137,7 @@ const searchLesson8 = async (req, res) => {
     const { query } = req.query;
 
     if (!query || typeof query != "string") {
-      return res.status(400).json({ success: false, message: "Noto'g'ri qidiruv so'rovi" });
+      return res.status(400).json({ success: false, message: "Notori qidiruv sorovi" });
     }
 
     const result = await Lesson8.find({

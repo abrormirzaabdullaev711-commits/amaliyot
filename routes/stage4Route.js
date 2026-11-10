@@ -53,11 +53,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: string
  *                 description: Stage 
  *     responses:
- *       201:
+ *       '201':
  *         description: Stage yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stage4.post("/addStage4", validateSchema(createStage4ValidationSchema), addStage4);
@@ -69,9 +69,9 @@ stage4.post("/addStage4", validateSchema(createStage4ValidationSchema), addStage
  *     summary: Barcha stage larni olish
  *     tags: [Stage]
  *     responses:
- *       200:
+ *       '200':
  *         description: Stage ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stage4.get("/getStage4", getStage4);
@@ -91,11 +91,11 @@ stage4.get("/getStage4", getStage4);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stage4 topildi
- *       404:
+ *       '404':
  *         description: Stage4 topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stage4.get("/getStage4ById/:id", getStage4ById);
@@ -113,11 +113,11 @@ stage4.get("/getStage4ById/:id", getStage4ById);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Stage o'chirildi
- *       404:
+ *       '404':
  *         description: Stage topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stage4.delete("/deleteStage4/:id", deleteStage4);
@@ -145,13 +145,13 @@ stage4.delete("/deleteStage4/:id", deleteStage4);
  *                 type: string
  *                 description: Stage 
  *     responses:
- *       200:
+ *       '200':
  *         description: Stage yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Stage topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 stage4.put("/updateStage4ById/:id", validateSchema(updateStage4ValidationSchema), updateStage4);

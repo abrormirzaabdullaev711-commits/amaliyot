@@ -53,11 +53,11 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 type: string
  *                 description: Admin
  *     responses:
- *       201:
+ *       '201':
  *         description: Role yaratildi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 role1.post("/addRole1", validateSchema(createRoleValidationSchema), addRole1);
@@ -69,9 +69,9 @@ role1.post("/addRole1", validateSchema(createRoleValidationSchema), addRole1);
  *     summary: Barcha rollarni olish
  *     tags: [Roles]
  *     responses:
- *       200:
+ *       '200':
  *         description: Rollar ro'yxati
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 role1.get("/getRoles", getRoles);
@@ -89,11 +89,11 @@ role1.get("/getRoles", getRoles);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Role topildi
- *       404:
+ *       '404':
  *         description: Role topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 role1.get("/getRoleById/:id", getRolebyId);
@@ -111,11 +111,11 @@ role1.get("/getRoleById/:id", getRolebyId);
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Role o'chirildi
- *       404:
+ *       '404':
  *         description: Role topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
 role1.delete("/deleteRole/:id", deleteRole);
@@ -143,15 +143,19 @@ role1.delete("/deleteRole/:id", deleteRole);
  *                 type: string
  *                 description: Admin
  *     responses:
- *       200:
+ *       '200':
  *         description: Role yangilandi
- *       400:
+ *       '400':
  *         description: Validation xatosi
- *       404:
+ *       '404':
  *         description: Role topilmadi
- *       500:
+ *       '500':
  *         description: Server xatosi
  */
-role1.put("/updateRoleById/:id",validateSchema(updateRoleValidationSchema),updateRole,);
+role1.put(
+  "/updateRoleById/:id",
+  validateSchema(updateRoleValidationSchema),
+  updateRole,
+);
 
 module.exports = { role1 };
