@@ -7,7 +7,7 @@ const stuff2Schema = new Schema(
     phone_number: { type: String, required: true, trim: true },
     login: { type: String, required: true, unique: true, trim: true },
     parol: { type: String, required: true },
-    is_active: { type: Boolean, default: false },
+    is_active: { type: Boolean },
   },
   { timestamps: true }
 );

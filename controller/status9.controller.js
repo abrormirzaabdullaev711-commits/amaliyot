@@ -1,10 +1,10 @@
-const { Status } = require("../model/status1schema");
+const { Status9 } = require("../model/status9schema");
 
 //-------------------addStatus----------------------//
 const addStatus = async (req, res) => {
   try {
-    const { name } = req.body;
-    const existingStatus = await Status.findOne({ name });
+    const { status } = req.body;
+    const existingStatus = await Status9.findOne({ status });
 
     console.log(existingStatus);
 
@@ -14,8 +14,8 @@ const addStatus = async (req, res) => {
         message: "bu nom bilan Status mavjud",
       });
     } else {
-      const newStatus = new Status({
-        name,
+      const newStatus = new Status9({
+        status,
       });
       await newStatus.save();
       return res.status(201).json({
@@ -35,7 +35,7 @@ const addStatus = async (req, res) => {
 //------------------------Get Status------------------------
 const getStatuss = async (req, res) => {
   try {
-    const Statuss = await Status.find({});
+    const Statuss = await Status9.find({});
     res.json({
       succes: true,
       message: "Barcha Statuslar royxati muvaffaqiyotli olindi",
@@ -55,7 +55,7 @@ const getStatusbyId = async (req, res) => {
   try {
     const StatusId = req.params.id;
 
-    const Status = await Status.findById(StatusId);
+    const Status = await Status9.findById(StatusId);
 
     if (!Status) {
       return res.status(404).json({ message: "Status not found" });
@@ -72,12 +72,12 @@ const deleteStatus = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const Status = await Status.findByIdAndDelete(id);
+    const Status = await Status9.findByIdAndDelete(id);
     if (Status) {
       res.status(200).json({
         success: true,
         message: "Status muvaffaqqiyatli o'chirildi",
-        delete_Status: Status.firstname,
+        delete_Status: Status9.firstname,
       });
     } else {
       res.status(404).json({ success: false, message: " Status not found" });
@@ -96,10 +96,10 @@ const deleteStatus = async (req, res) => {
 const updateStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name } = req.body;
-    const updateStatus = await Status.findByIdAndUpdate(
+    const { status } = req.body;
+    const updateStatus = await Status9.findByIdAndUpdate(
       id,
-      { name },
+      { status },
       { new: true },
     );
     if (!updateStatus) {
@@ -132,8 +132,8 @@ const searchStatus = async (req, res) => {
       return res.status(400).json({ message: "Invalid search query" });
     }
 
-    const result = await Status.find({
-      $or: [{ name: { $regex: query, $options: "i" } }],
+    const result = await Status9.find({
+      $or: [{ status: { $regex: query, $options: "i" } }],
     });
 
     if (result.length === 0) {

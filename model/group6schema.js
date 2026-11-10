@@ -10,7 +10,7 @@ const group6Schema = new Schema({
   room_floor: { type: Number, required: true },
   branch_id: { type: Schema.Types.ObjectId, ref: "branch5", required: true },
   lessons_quant: { type: Number, required: true },
-  is_active: { type: Boolean, default: false },
+  is_active: { type: Boolean,  },
 });
 
 const Group6 = model("group6", group6Schema);

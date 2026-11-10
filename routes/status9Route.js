@@ -1,5 +1,5 @@
-const { Router } = require("mongoose");
-const role1 = Router();
+const { Router } = require("express");
+const status9 = Router();
 
 const {
   addStatus,
@@ -10,23 +10,24 @@ const {
 } = require("../controller/status9.controller");
 
 const {
-  createStatusValidationSchema,
-  updateStatusValidationSchema,
+  createStatus9ValidationSchema,
+  updateStatus9ValidationSchema,
 } = require("../validation/status9Validation");
 
-const validateSchema = (schema = (req, res, next) => {
+const validateSchema = (schema) => (req, res, next) => {
   const validationResult = schema.validate(req.body);
 
   if (validationResult.error) {
     return res.status(400).json({
-      succes: false,
+      success: false,
       message: validationResult.error.details[0].message,
     });
   }
 
   next();
-});
+};
 
+module.exports = validateSchema;
 /**
  * @swagger
  * tags:
@@ -59,22 +60,26 @@ const validateSchema = (schema = (req, res, next) => {
  *        description: Validation xatosi
  *     '500':
  *        description: Server xatosi
- *    
+ *
  */
-status9.post("/addStatus",validateSchema(createStatus9ValidationSchema),addStatus)
-
+status9.post(
+  "/addStatus",
+  validateSchema(createStatus9ValidationSchema),
+  addStatus,
+);
 
 /**
  * @swagger
- * /status/getStatuss:
+ * /status9/getStatuss:
  *   get:
  *     summary: Barcha branch larni olish
- *     tags: [Branch]
+ *     tags: [Status]
  *     responses:
  *       '200':
  *         description: Branch ro'yxati
  *       '500':
  *         description: Server xatosi
  */
-status.get("/getStatuss", getStatuss);
+status9.get("/getStatuss", getStatuss);
 
+module.exports = { status9 };

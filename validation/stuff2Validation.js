@@ -14,7 +14,7 @@ const createStuff2ValidationSchema = Joi.object({
     .pattern(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/,
     ),
-  is_active: Joi.boolean().default(false).optional(),
+  is_active: Joi.boolean().optional(),
 });
 
 const updateStuff2ValidationSchema = Joi.object({
