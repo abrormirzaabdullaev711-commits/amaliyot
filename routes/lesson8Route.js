@@ -63,7 +63,6 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 description: Lesson IDsi
  *               lesson_date:
  *                 type: string
- *                 format: date
  *                 description: Dars sanasi
  *     responses:
  *       '201':

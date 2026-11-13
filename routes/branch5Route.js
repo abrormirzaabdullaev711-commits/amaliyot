@@ -77,7 +77,7 @@ branch5.post("/addBranch5", validateSchema(createBranch5ValidationSchema), addBr
  *     summary: Barcha branch larni olish
  *     tags: [Branch]
  *     responses:
- *       '200':
+ *       '':
  *         description: Branch ro'yxati
  *       '500':
  *         description: Server xatosi
@@ -99,7 +99,7 @@ branch5.get("/getBranch5", getBranch5);
  *         schema:
  *           type: string
  *     responses:
- *       '200':
+ *       '':
  *         description: Branch topildi
  *       '404':
  *         description: Branch topilmadi
@@ -121,7 +121,7 @@ branch5.get("/getBranch5ById/:id", getBranch5ById);
  *         schema:
  *           type: string
  *     responses:
- *       '200':
+ *       '':
  *         description: Branch o'chirildi
  *       '404':
  *         description: Branch topilmadi
@@ -159,7 +159,7 @@ branch5.delete("/deleteBranch5/:id", deleteBranch5);
  *                 type: string
  *                 description: Telefon raqami
  *     responses:
- *       '200':
+ *       '':
  *         description: Branch yangilandi
  *       '400':
  *         description: Validation xatosi

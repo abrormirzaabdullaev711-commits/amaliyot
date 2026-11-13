@@ -77,10 +77,10 @@ const deleteStatus = async (req, res) => {
       res.status(200).json({
         success: true,
         message: "Status muvaffaqqiyatli o'chirildi",
-        delete_Status: Status9.firstname,
+        delete_Status: Status9.status,
       });
     } else {
-      res.status(404).json({ success: false, message: " Status not found" });
+      res.status(404).json({ success: false, message: "Status not found" });
     }
   } catch (err) {
     console.error(err);

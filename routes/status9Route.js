@@ -27,7 +27,6 @@ const validateSchema = (schema) => (req, res, next) => {
   next();
 };
 
-module.exports = validateSchema;
 /**
  * @swagger
  * tags:
@@ -72,14 +71,96 @@ status9.post(
  * @swagger
  * /status9/getStatuss:
  *   get:
- *     summary: Barcha branch larni olish
+ *     summary: Barcha Status larni olish
  *     tags: [Status]
  *     responses:
  *       '200':
- *         description: Branch ro'yxati
+ *         description: Status ro'yxati
  *       '500':
  *         description: Server xatosi
  */
 status9.get("/getStatuss", getStatuss);
+
+/**
+ * @swagger
+ * /status9/getstatusById/{id}:
+ *   get:
+ *     summary: ID orqali status9 olish
+ *     tags: [Status]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Status topildi
+ *       '404':
+ *         description: Status topilmadi
+ *       '500':
+ *         description: Server xatosi
+ */
+status9.get("/getstatusById/:id", getStatusbyId);
+
+/**
+ * @swagger
+ * /status9/deletestatus9/{id}:
+ *   delete:
+ *     summary: Status o'chirish
+ *     tags: [Status]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Status o'chirildi
+ *       '404':
+ *         description: Status topilmadi
+ *       '500':
+ *         description: Server xatosi
+ */
+status9.delete("/deletestatus9/:id", deleteStatus);
+
+/**
+ * @swagger
+ * /status9/updatestatus9ById/{id}:
+ *   put:
+ *     summary: Status ma'lumotlarini yangilash
+ *     tags: [Status]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status :
+ *                 type: string
+ *                 description: Status
+ *     responses:
+ *       '200':
+ *         description: Status yangilandi
+ *       '400':
+ *         description: Validation xatosi
+ *       '404':
+ *         description: Status topilmadi
+ *       '500':
+ *         description: Server xatosi
+ */
+status9.put(
+  "/updatestatus9ById/:id",
+  validateSchema(updateStatus9ValidationSchema),
+  updateStatus,
+);
 
 module.exports = { status9 };

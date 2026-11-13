@@ -100,7 +100,7 @@ const deleteGroup6 = async (req, res) => {
       res.status(200).json({
         success: true,
         message: "group o'chirildi",
-        delete_group: group._id,
+        delete_group: group_name,
       });
     } else {
       res.status(404).json({ success: false, message: "group topilmadi" });

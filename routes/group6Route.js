@@ -71,7 +71,7 @@ const validateSchema = (schema) => (req, res, next) => {
  *                 description: Dars haftasi kunlari
  *               group_stage_idint:
  *                 type: number
- *                 description: Group bosqich IDsi
+ *                 description: Group Id
  *               room_number:
  *                 type: string
  *                 description: Xona raqami
