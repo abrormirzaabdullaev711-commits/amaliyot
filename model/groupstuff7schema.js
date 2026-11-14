@@ -1,16 +1,10 @@
-const Joi = require("joi");
-
-const createGroupStuff7ValidationSchema = Joi.object({
-  group_id: Joi.string().required().trim(),
-  stuff_id: Joi.string().required().trim(),
+const { Schema, model } = require("mongoose");
+const { group6 } = require("../routes/group6Route");
+const { stuff2 } = require("../routes/stuff2Route");
+const groupStuff7Schema = new Schema({
+  group_id: { type: Schema.Types.ObjectId, ref: group6, required: true },
+  stuff_id: { type: Schema.Types.ObjectId, ref: stuff2, required: true },
 });
 
-const updateGroupStuff7ValidationSchema = Joi.object({
-  group_id: Joi.string().optional().trim(),
-  stuff_id: Joi.string().optional().trim(),
-});
-
-module.exports = {
-  createGroupStuff7ValidationSchema,
-  updateGroupStuff7ValidationSchema,
-};
+const GroupStuff7 = model("group_stuff7", groupStuff7Schema);
+module.exports = { GroupStuff7 };

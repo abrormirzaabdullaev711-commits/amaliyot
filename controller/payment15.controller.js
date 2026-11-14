@@ -20,7 +20,7 @@ const addPayment15 = async (req, res) => {
       is_paid,
       total_attent,
     });
-    
+
     await newPayment.save();
     return res.status(201).json({
       success: true,
@@ -61,7 +61,9 @@ const getPayment15ById = async (req, res) => {
     const payment = await Payment15.findById(id).populate("student_id");
 
     if (!payment) {
-      return res.status(404).json({ success: false, message: "payment topilmadi" });
+      return res
+        .status(404)
+        .json({ success: false, message: "payment topilmadi" });
     }
     res.json({ success: true, message: "payment topildi", payment });
   } catch (error) {
@@ -102,7 +104,9 @@ const updatePayment15 = async (req, res) => {
     const updatePayment = await Payment15.findByIdAndUpdate(
       id,
       req.body,
-      { new: true }
+      {
+        new: true,
+      },
     );
     if (!updatePayment) {
       return res.status(404).json({
@@ -131,7 +135,9 @@ const searchPayment15 = async (req, res) => {
     const { query } = req.query;
 
     if (!query || typeof query != "string") {
-      return res.status(400).json({ success: false, message: "Noto'g'ri qidiruv so'rovi" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Noto'g'ri qidiruv so'rovi" });
     }
 
     const result = await Payment15.find({}).populate("student_id");

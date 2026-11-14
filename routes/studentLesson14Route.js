@@ -31,7 +31,7 @@ const validateSchema = (schema) => (req, res, next) => {
 /**
  * @swagger
  * tags:
- *   name: Group
+ *   name: StudentLesson
  *   description: StudentLesson14 ni boshqarish endpointlari
  */
 
@@ -40,7 +40,7 @@ const validateSchema = (schema) => (req, res, next) => {
  * /studentLesson14/addStudentLesson14:
  *   post:
  *     summary: Yangi studentLesson14 yaratish
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     requestBody:
  *       required: true
  *       content:
@@ -81,7 +81,7 @@ studentLesson14.post("/addStudentLesson14", validateSchema(createStudentLesson14
  * /studentLesson14/getStudentLesson14:
  *   get:
  *     summary: Barcha studentLesson14 larni olish
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     responses:
  *       '200':
  *         description: studentLesson14 ro'yxati
@@ -95,7 +95,7 @@ studentLesson14.get("/getStudentLesson14", getStudentLesson14);
  * /studentLesson14/search:
  *   get:
  *     summary: studentLesson14 qidirish
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     parameters:
  *       - in: query
  *         name: query
@@ -113,7 +113,7 @@ studentLesson14.get("/search", searchStudentLesson14);
  * /studentLesson14/getStudentLesson14ById/{id}:
  *   get:
  *     summary: ID orqali studentLesson14 olish
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     parameters:
  *       - in: path
  *         name: id
@@ -135,7 +135,7 @@ studentLesson14.get("/getStudentLesson14ById/:id", getStudentLesson14ById);
  * /studentLesson14/deleteStudentLesson14/{id}:
  *   delete:
  *     summary: studentLesson14 o'chirish
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     parameters:
  *       - in: path
  *         name: id
@@ -157,7 +157,7 @@ studentLesson14.delete("/deleteStudentLesson14/:id", deleteStudentLesson14);
  * /studentLesson14/updateStudentLesson14ById/{id}:
  *   put:
  *     summary: studentLesson14 ma'lumotlarini yangilash
- *     tags: [Group]
+ *     tags: [StudentLesson]
  *     parameters:
  *       - in: path
  *         name: id

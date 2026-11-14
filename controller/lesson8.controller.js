@@ -86,7 +86,7 @@ const deleteLesson8 = async (req, res) => {
       res.status(200).json({
         success: true,
         message: "lesson o'chirildi",
-        delete_lesson: lesson._id,
+        delete_lesson: lesson,
       });
     } else {
       res.status(404).json({ success: false, message: "lesson topilmadi" });
@@ -104,9 +104,16 @@ const deleteLesson8 = async (req, res) => {
 //--------------------------update Lesson8------------------------//
 const updateLesson8 = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { lesson_theme,
+      lesson_number,
+      lesson_id,
+      lesson_date,
+     } = req.params;
     const updateLesson = await Lesson8.findByIdAndUpdate(
-      id,
+      lesson_theme,
+      lesson_number,
+      lesson_id,
+      lesson_date,
       req.body,
       { new: true }
     );

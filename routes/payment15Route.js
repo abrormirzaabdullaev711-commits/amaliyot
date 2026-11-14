@@ -49,10 +49,7 @@ const validateSchema = (schema) => (req, res, next) => {
  *             type: object
  *             required:
  *               - student_id
- *               - payment_last_date
- *               - payment_date
  *               - price
- *               - total_attent
  *             properties:
  *               student_id:
  *                 type: string

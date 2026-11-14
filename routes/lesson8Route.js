@@ -49,7 +49,7 @@ const validateSchema = (schema) => (req, res, next) => {
  *             required:
  *               - lesson_theme
  *               - lesson_number
- *               - lesson_id
+ *               - group_id
  *               - lesson_date
  *             properties:
  *               lesson_theme:
@@ -58,7 +58,7 @@ const validateSchema = (schema) => (req, res, next) => {
  *               lesson_number:
  *                 type: number
  *                 description: Dars raqami
- *               Lesson_id:
+ *               group_id:
  *                 type: string
  *                 description: Lesson IDsi
  *               lesson_date:
@@ -157,7 +157,7 @@ lesson8.delete("/deleteLesson8/:id", deleteLesson8);
  *               lesson_number:
  *                 type: number
  *                 description: 67
- *               lesson_id: 
+ *               group_id: 
  *                 type: string
  *                 description: Lesson id
  *               lesson_date:
