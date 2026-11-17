@@ -1,4 +1,5 @@
 const { GroupStuff7 } = require("../model/groupStuff7Schema");
+const { searchGroup6 } = require("./group6.controller");
 
 //-------------------addGroupStuff7----------------------//
 const addGroupStuff7 = async (req, res) => {
@@ -36,7 +37,7 @@ const addGroupStuff7 = async (req, res) => {
 //------------------------Get group_stuff7------------------------
 const getGroupStuff7 = async (req, res) => {
   try {
-    const groupStuffs = await GroupStuff7.find({}).populate("group_id").populate("stuff_id");
+    const groupStuffs = await GroupStuff7.find({});
     res.json({
       success: true,
       message: "GroupStuff ro'yxati",
@@ -56,7 +57,7 @@ const getGroupStuff7ById = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const groupStuff = await GroupStuff7.findById(id).populate("group_id").populate("stuff_id");
+    const groupStuff = await GroupStuff7.findById(id);
 
     if (!groupStuff) {
       return res.status(404).json({ success: false, message: "group_stuff topilmadi" });
@@ -123,7 +124,28 @@ const updateGroupStuff7 = async (req, res) => {
   }
 };
 
+//----------------------search Groupstuff-----------------//
+const searchGroupstuff = async (req, res) => {
+  try {
+    const { query } = req.query;
 
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await GroupStuff7.find({
+      $or: [{ group_id: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Groupstuff:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Groupstuff" });
+  }
+};
 
 module.exports = {
   addGroupStuff7,
@@ -131,4 +153,5 @@ module.exports = {
   getGroupStuff7ById,
   updateGroupStuff7,
   deleteGroupStuff7,
+  searchGroup6,
 };

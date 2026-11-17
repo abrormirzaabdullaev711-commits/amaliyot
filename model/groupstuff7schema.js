@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
-const { group6 } = require("../routes/group6Route");
-const { stuff2 } = require("../routes/stuff2Route");
+const { Group6 } = require("./group6schema");
+const { Stuff2 } = require("./stuff2schema");
 const groupStuff7Schema = new Schema({
-  group_id: { type: Schema.Types.ObjectId, ref: group6, required: true },
-  stuff_id: { type: Schema.Types.ObjectId, ref: stuff2, required: true },
+  group_id: { type: Schema.Types.ObjectId, ref: Group6, required: true },
+  stuff_id: { type: Schema.Types.ObjectId, ref: Stuff2, required: true },
 });
 
 const GroupStuff7 = model("group_stuff7", groupStuff7Schema);

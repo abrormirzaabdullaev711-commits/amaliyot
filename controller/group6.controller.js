@@ -56,7 +56,7 @@ const addGroup6 = async (req, res) => {
 //------------------------Get group6------------------------
 const getGroup6 = async (req, res) => {
   try {
-    const groups = await Group6.find({}).populate("branch_id");
+    const groups = await Group6.find({});
     res.json({
       success: true,
       message: "Group ro'yxati",
@@ -76,7 +76,7 @@ const getGroup6ById = async (req, res) => {
   try {
     const groupId = req.params.id;
 
-    const group = await Group6.findById(groupId).populate("branch_id");
+    const group = await Group6.findById(groupId);
 
     if (!group) {
       return res
@@ -119,9 +119,8 @@ const deleteGroup6 = async (req, res) => {
 const updateGroup6 = async (req, res) => {
   try {
     const { id } = req.params;
-    const updateGroup = await Group6.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+    const updateGroup = await Group6.findByIdAndUpdate(id, req.body,
+       {new: true,});
     if (!updateGroup) {
       return res.status(404).json({
         success: false,

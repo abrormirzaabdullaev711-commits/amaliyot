@@ -126,10 +126,34 @@ const updateStuff2 = async (req, res) => {
   }
 };
 
+//----------------------search Stuff-----------------//
+const searchStuff = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await Stuff2.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Stuff:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Stuff" });
+  }
+};
+
 module.exports = {
   addStuff2,
   getStuff2,
   getStuff2ById,
   updateStuff2,
   deleteStuff2,
+  searchStuff
 };

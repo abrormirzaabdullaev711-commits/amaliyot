@@ -130,11 +130,33 @@ const updateStudentGroup13 = async (req, res) => {
     });
   }
 };
+//----------------------search Studentgroup-----------------//
+const searchStudentgroup = async (req, res) => {
+  try {
+    const { query } = req.query;
 
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await Studentgroup12.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Studentgroup:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Studentgroup" });
+  }
+};
 module.exports = {
   addStudentGroup13,
   getStudentGroup13,
   getStudentGroup13ById,
   updateStudentGroup13,
   deleteStudentGroup13,
+  searchStudentgroup
 };

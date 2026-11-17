@@ -123,6 +123,28 @@ const updateBranch5 = async (req, res) => {
     });
   }
 };
+//----------------------search Branch-----------------//
+const searchBranch = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await Branch5.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Branch:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Branch" });
+  }
+};
 
 module.exports = {
   addBranch5,
@@ -130,4 +152,5 @@ module.exports = {
   getBranch5ById,
   updateBranch5,
   deleteBranch5,
+  searchBranch,
 };

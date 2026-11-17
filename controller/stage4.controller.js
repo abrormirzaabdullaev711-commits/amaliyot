@@ -123,6 +123,29 @@ const updateStage4 = async (req, res) => {
   }
 };
 
+//----------------------search Stage-----------------//
+const searchStage = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await Stage4.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Stage:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Stage" });
+  }
+};
+
 
 module.exports = {
   addStage4,

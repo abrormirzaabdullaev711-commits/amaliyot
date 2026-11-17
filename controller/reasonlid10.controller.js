@@ -124,7 +124,28 @@ const updateReasonlid = async (req, res) => {
   }
 };
 
+//----------------------search Reasonlid-----------------//
+const searchReasonlid = async (req, res) => {
+  try {
+    const { query } = req.query;
 
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await Reasonlid.find({
+      $or: [{ reasonlid: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching Reasonlid:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Reasonlid" });
+  }
+};
 
 module.exports = {
   addReasonlid,
@@ -132,5 +153,6 @@ module.exports = {
   getReasonlidById,
   updateReasonlid,
   deleteReasonlid,
+  searchReasonlid
 
 }

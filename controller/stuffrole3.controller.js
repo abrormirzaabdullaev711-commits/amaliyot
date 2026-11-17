@@ -123,10 +123,34 @@ const updateStuffRole3 = async (req, res) => {
   }
 };
 
+//----------------------search StuffRole-----------------//
+const searchStuffRole = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || typeof query != "string") {
+      return res.status(400).json({ message: "Invalid search query" });
+    }
+
+    const result = await StuffRole3.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
+
+    if (result.length === 0) {
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
+    }
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching StuffRole:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch StuffRole" });
+  }
+};
+
 module.exports = {
   addStuffRole3,
   getStuffRole3,
   getStuffRole3ById,
   updateStuffRole3,
   deleteStuffRole3,
+  searchStuffRole
 };

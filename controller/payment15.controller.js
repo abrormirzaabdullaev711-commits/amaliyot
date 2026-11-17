@@ -129,26 +129,26 @@ const updatePayment15 = async (req, res) => {
   }
 };
 
-//----------------------search Payment15-----------------//
-const searchPayment15 = async (req, res) => {
+//----------------------search Payment-----------------//
+const searchPayment = async (req, res) => {
   try {
     const { query } = req.query;
 
     if (!query || typeof query != "string") {
-      return res
-        .status(400)
-        .json({ success: false, message: "Noto'g'ri qidiruv so'rovi" });
+      return res.status(400).json({ message: "Invalid search query" });
     }
 
-    const result = await Payment15.find({}).populate("student_id");
+    const result = await Payment15.find({
+      $or: [{ student_id: { $regex: query, $options: "i" } }],
+    });
 
     if (result.length === 0) {
-      return res.json({ success: false, message: "Bunday payment topilmadi" });
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
     }
-    res.json({ success: true, innerData: result });
+    res.json(result);
   } catch (error) {
     console.error("Error fetching Payment:", error);
-    res.status(500).json({ success: false, message: "Server xatosi" });
+    res.status(500).json({ message: "Server error: Failed to fetch Payment" });
   }
 };
 
@@ -156,7 +156,7 @@ module.exports = {
   addPayment15,
   getPayment15,
   getPayment15ById,
-  searchPayment15,
+  searchPayment,
   updatePayment15,
   deletePayment15,
 };

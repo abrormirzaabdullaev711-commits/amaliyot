@@ -1,4 +1,4 @@
-const { Lesson8 } = require("../model/lesson8Schema");
+const { Lesson8 } = require("../model/lesson8schema");
 
 //-------------------addLesson8----------------------//
 const addLesson8 = async (req, res) => {
@@ -138,28 +138,29 @@ const updateLesson8 = async (req, res) => {
   }
 };
 
-//----------------------search Lesson8-----------------//
-const searchLesson8 = async (req, res) => {
+//----------------------searchLesson-----------------//
+const searchLesson = async (req, res) => {
   try {
     const { query } = req.query;
 
     if (!query || typeof query != "string") {
-      return res.status(400).json({ success: false, message: "Notori qidiruv sorovi" });
+      return res.status(400).json({ message: "Invalid search query" });
     }
 
-    const result = await Lesson8.find({
-      $or: [{ lesson_theme: { $regex: query,$options: "i" } }],
-    }).populate("group_id");
+    const result = awaitLesson.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
 
     if (result.length === 0) {
-      return res.json({ success: false, message: "Bunday lesson topilmadi" });
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
     }
-    res.json({ success: true, innerData: result });
+    res.json(result);
   } catch (error) {
-    console.error("Error fetching Lesson:", error);
-    res.status(500).json({ success: false, message: "Server xatosi" });
+    console.error("Error fetchingLesson:", error);
+    res.status(500).json({ message: "Server error: Failed to fetchLesson" });
   }
 };
+
 
 module.exports = {
   addLesson8,

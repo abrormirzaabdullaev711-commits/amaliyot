@@ -130,28 +130,26 @@ const updateStudentLesson14 = async (req, res) => {
   }
 };
 
-//----------------------search StudentLesson14-----------------//
-const searchStudentLesson14 = async (req, res) => {
+//----------------------search Studentlesson-----------------//
+const searchStudentlesson = async (req, res) => {
   try {
     const { query } = req.query;
 
     if (!query || typeof query != "string") {
-      return res.status(400).json({ success: false, message: "Noto'g'ri qidiruv so'rovi" });
+      return res.status(400).json({ message: "Invalid search query" });
     }
 
-    const result = await StudentLesson14.find({
-      $or: [{ reason: { $regex: query, $options: "i" } }],
-    })
-      .populate("lesson_id")
-      .populate("student_id");
+    const result = await Studentlesson14.find({
+      $or: [{ name: { $regex: query, $options: "i" } }],
+    });
 
     if (result.length === 0) {
-      return res.json({ success: false, message: "Bunday student_lesson topilmadi" });
+      return res.json({ message: "Bunday foydalanuvchi topilmadi" });
     }
-    res.json({ success: true, innerData: result });
+    res.json(result);
   } catch (error) {
-    console.error("Error fetching StudentLesson:", error);
-    res.status(500).json({ success: false, message: "Server xatosi" });
+    console.error("Error fetching Studentlesson:", error);
+    res.status(500).json({ message: "Server error: Failed to fetch Studentlesson" });
   }
 };
 
@@ -159,7 +157,7 @@ module.exports = {
   addStudentLesson14,
   getStudentLesson14,
   getStudentLesson14ById,
-  searchStudentLesson14,
+  searchStudentlesson,
   updateStudentLesson14,
   deleteStudentLesson14,
 };

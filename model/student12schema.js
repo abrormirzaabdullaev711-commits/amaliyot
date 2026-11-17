@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
-const { lid } = require("./lid11schema");
+const { Lid } = require("./lid11schema");
 const student12Schema = new Schema({
-  lid_id: { type: Schema.Types.ObjectId, ref: lid, required: true },
+  lid_id: { type: Schema.Types.ObjectId, ref: Lid, required: true },
   first_name: { type: String, required: true, trim: true },
   last_name: { type: String, required: true, trim: true },
   phone_number: { type: String, required: true, trim: true },
